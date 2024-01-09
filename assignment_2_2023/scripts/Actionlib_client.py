@@ -98,45 +98,45 @@ def goal_reached(client, stop_event):
 
 def create_goal(x_goal, y_goal):
         
-        """
-        Function to create the goal to send to the action server, 
-        it publishes the goal created on the topic /goal_topic.
-        inputs: x_goal (float), y_goal (float)
-        """
+    """
+    Function to create the goal to send to the action server, 
+    it publishes the goal created on the topic /goal_topic.
+    inputs: x_goal (float), y_goal (float)
+    """
     
-        global goal
+    global goal
     
-        # Create the goal to send to the action server
-        goal = PlanningGoal()
-        goal.target_pose = PoseStamped()
-        goal.target_pose.pose.position.x = x_goal
-        goal.target_pose.pose.position.y = y_goal
+    # Create the goal to send to the action server
+    goal = PlanningGoal()
+    goal.target_pose = PoseStamped()
+    goal.target_pose.pose.position.x = x_goal
+    goal.target_pose.pose.position.y = y_goal
     
-        # Publish the goal
-        pub_goal.publish(goal)
+    # Publish the goal
+    pub_goal.publish(goal)
 
 def ask_target_position():
         
-        """
-        Function to ask the user for the goal coordinates.
-        output: x_goal (float), y_goal (float)
-        """
+    """
+    Function to ask the user for the goal coordinates.
+    output: x_goal (float), y_goal (float)
+    """
     
-        # Ask the user for the goal coordinates
-        while True:
-            x_goal = float(input('Enter the goal x position (-8;8): '))
-            if -8 <= x_goal <= 8:
-                break
-            else:
-                print('Invalid x position. Try again.')
-        while True:
-            y_goal = float(input('Enter the goal y position (-8;8): '))
-            if -8 <= y_goal <= 8:
-                break
-            else:
-                print('Invalid y position. Try again.')
+    # Ask the user for the goal coordinates
+    while True:
+        x_goal = float(input('Enter the goal x position (-8;8): '))
+        if -8 <= x_goal <= 8:
+            break
+        else:
+            print('Invalid x position. Try again.')
+    while True:
+        y_goal = float(input('Enter the goal y position (-8;8): '))
+        if -8 <= y_goal <= 8:
+            break
+        else:
+            print('Invalid y position. Try again.')
         
-        return x_goal, y_goal
+    return x_goal, y_goal
 
 
 def main():

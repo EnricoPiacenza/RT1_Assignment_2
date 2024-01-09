@@ -15,6 +15,8 @@ def goal_callback(msg):
     """
     callback function for the topic /goal_topic, 
     it saves the goal position in global variables x_g and y_g.
+
+    input: msg (PlanningGoal)
     """
 
     global x_g,y_g
@@ -23,10 +25,13 @@ def goal_callback(msg):
     y_g = msg.target_pose.pose.position.y
 
 def PosVel_Callback(data):
+
     """
     callback function for the topic /odom, 
     it saves the current position and velocity in global variable position_velocity
     and it fills the queues q_vx and q_vz with the current linear velocity along x and the angular velocity around z.
+
+    input: data (Odometry)
     """
     global position_velocity
     global q_vx
@@ -53,10 +58,14 @@ def PosVel_Callback(data):
         q_vz.put(position_velocity.vel_z)
 
 def dist_Callback(req):
+
     """
     callback function for the service Dist_target,
     it computes the distance to the goal 
     and the average linear velocity along x and the avarage angular velocity around z.
+
+    input: req
+    output: x, y, v_x, v_z (float64)
     """
     global position_velocity
     global q_vx
@@ -74,10 +83,11 @@ def dist_Callback(req):
 
 
 def main():
+    
     """
     main function of the node,
     it initializes the node, subscribes to the topics /odom and /goal_topic
-    and creates the service server Dist_target
+    and creates the service server Dist_target.
     """
     
     # Initialize the nodes
