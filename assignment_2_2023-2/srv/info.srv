@@ -1,0 +1,6 @@
+---
+
+float32 dist_x
+float32 dist_y
+float32 av_speed_x
+float32 av_speed_y
