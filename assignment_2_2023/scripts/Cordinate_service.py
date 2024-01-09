@@ -8,9 +8,19 @@ from assignment_2_2023.msg import PlanningGoal
 # Service callback function
 def cord_Callback(_req):
 
+    """
+    callback function for the service Cord_serv,
+    it returns the goal cordiantes x, y, z.
+    """
+
     return x, y, z
 
 def goal_callback(msg):
+
+    """
+    callback function for the topic /goal_topic,
+    it saves the goal position in global variables x, y, z.
+    """
 
     global x,y,z
 

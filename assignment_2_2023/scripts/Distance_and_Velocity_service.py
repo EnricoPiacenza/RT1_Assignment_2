@@ -6,12 +6,16 @@ from assignment_2_2023.msg import PositionVelocity, PlanningGoal
 from assignment_2_2023.srv import info
 from nav_msgs.msg import Odometry
 
-
-
+# Global FIFO queues for the linear velocity along x and the angular velocity around z
 q_vx = queue.Queue(10)
 q_vz = queue.Queue(10)
 
 def goal_callback(msg):
+
+    """
+    callback function for the topic /goal_topic, 
+    it saves the goal position in global variables x_g and y_g.
+    """
 
     global x_g,y_g
 
@@ -19,7 +23,11 @@ def goal_callback(msg):
     y_g = msg.target_pose.pose.position.y
 
 def PosVel_Callback(data):
-
+    """
+    callback function for the topic /odom, 
+    it saves the current position and velocity in global variable position_velocity
+    and it fills the queues q_vx and q_vz with the current linear velocity along x and the angular velocity around z.
+    """
     global position_velocity
     global q_vx
     global q_vz
@@ -45,7 +53,11 @@ def PosVel_Callback(data):
         q_vz.put(position_velocity.vel_z)
 
 def dist_Callback(req):
-
+    """
+    callback function for the service Dist_target,
+    it computes the distance to the goal 
+    and the average linear velocity along x and the avarage angular velocity around z.
+    """
     global position_velocity
     global q_vx
     global q_vz
@@ -62,6 +74,11 @@ def dist_Callback(req):
 
 
 def main():
+    """
+    main function of the node,
+    it initializes the node, subscribes to the topics /odom and /goal_topic
+    and creates the service server Dist_target
+    """
     
     # Initialize the nodes
     rospy.init_node('Distance_and_Velocity_service', anonymous=True)
@@ -73,7 +90,7 @@ def main():
     rospy.Subscriber('goal_topic', PlanningGoal, goal_callback)
 
     # Create a service server Dist_target
-    s = rospy.Service('Dist_target', info, dist_Callback)    
+    rospy.Service('Dist_target', info, dist_Callback)    
 
     rospy.spin()
     
