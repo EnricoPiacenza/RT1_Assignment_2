@@ -14,7 +14,6 @@
     - Create an Actionlib client using `actionlib.SimpleActionClient('/reaching_goal', PlanningAction)`.
     - If the action server doesn't start within 20 seconds:
         - Print an error message.
-        - 
     - else:
         - Print a success message.
     - Start an infinite loop:
