@@ -59,7 +59,7 @@ def input_with_timeout(timeout):
 
 
 
-def ask_user_to_cancel(client):
+def ask_user_to_cancel(client, stop_event):
 
     """
     Function to ask the user if they want to cancel the goal.
@@ -175,7 +175,7 @@ def main():
         stop_event = threading.Event()
 
         # Start a new thread that asks the user if they want to cancel the goal
-        cancel_thread = threading.Thread(target=ask_user_to_cancel, args=(client))
+        cancel_thread = threading.Thread(target=ask_user_to_cancel, args=(client, stop_event))
         cancel_thread.start()
 
         # Start a new thread that waits for the goal to be reached
