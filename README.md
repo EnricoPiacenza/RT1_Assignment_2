@@ -8,7 +8,7 @@ This is the README.MD file for the second assignment of the course Research Trac
 
 [![Video of the run](https://img.youtube.com/vi/hKJ1cgLF3y0/hqdefault.jpg)](https://youtu.be/hKJ1cgLF3y0)
 
-### Pseudocode of the main functions:
+## Pseudocode of the main functions:
 
 1. Import libraries and modules.
 
