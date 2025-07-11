@@ -1,4 +1,14 @@
-### Define libraries, modules and global variables needed for the correct functioning of the program
+# Research Track 1 - Assignmnt 2
+This is the README.MD file for the second assignment of the course Research Track 1.
+
+## AUTHOR 👨‍💻
+* [Enrico Piacenza](https://github.com/EnricoPiacenza) (s4878469)
+
+## Video 🎬
+
+[![Video of the run](https://img.youtube.com/vi/hKJ1cgLF3y0/hqdefault.jpg)](https://youtu.be/hKJ1cgLF3y0)
+
+### Pseudocode of the main functions:
 
 1. Import libraries and modules.
 
